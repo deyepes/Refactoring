@@ -7,24 +7,23 @@ public class main {
         boolean isOrderActive = true;
         Scanner input = new Scanner(System.in);
 
-        System.out.println("Venta de perros y hamburguesas");
+        printMessage("Venta de perros y hamburguesas");
 
         while (isOrderActive) {
-
-            System.out.println("Seleccione producto: ");
-            System.out.println("1. Perro \n2. Hamburguesa");
+            printMessage("Seleccione producto: ");
+            printMessage("1. Perro \n2. Hamburguesa");
             selectedProduct = Integer.parseInt(input.nextLine());
-            System.out.println("Indique cantidad: ");
+            printMessage("Indique cantidad: ");
             productQuantity = Integer.parseInt(input.nextLine());
             if (selectedProduct == 1) {
-                hotDogSellQuantity = hotDogSellQuantity + productQuantity;
+                hotDogSellQuantity = getProductSellQuantity(hotDogSellQuantity, productQuantity);
             } else if (selectedProduct == 2) {
-                hamburgerSellQuantity = hamburgerSellQuantity + productQuantity;
+                hamburgerSellQuantity = getProductSellQuantity(hamburgerSellQuantity, productQuantity);
             } else {
                 break;
             }
-            System.out.println("Desea finalizar o agregar otro producto ?");
-            System.out.println("1. Agregar \n2. Finalizar");
+            printMessage("Desea finalizar o agregar otro producto ?");
+            printMessage("1. Agregar \n2. Finalizar");
             endOrder = Integer.parseInt(input.nextLine());
             if (endOrder == 1) {
                 isOrderActive = true;
@@ -35,9 +34,27 @@ public class main {
             }
         }
 
-        totalHamburgerPrice = hamburgerValue * hamburgerSellQuantity;
-        totalHotDogPrice = hotDogValue * hotDogSellQuantity;
-        totalOrderPrice = totalHamburgerPrice + totalHotDogPrice;
-        System.out.println("Total: " + totalOrderPrice);
+        totalHamburgerPrice = getTotalProductPrice(hamburgerValue, hamburgerSellQuantity);
+        totalHotDogPrice = getTotalProductPrice(hotDogValue, hotDogSellQuantity);
+        totalOrderPrice = getTotalOrderPrice(totalHotDogPrice, totalHamburgerPrice);
+        printMessage("Total: " + totalOrderPrice);
     }
+
+    private static int getProductSellQuantity(int productSellQuantity, int productQuantity) {
+        return productSellQuantity + productQuantity;
+    }
+
+    private static int getTotalOrderPrice(int totalHotDogPrice, int totalHamburgerPrice) {
+        return totalHamburgerPrice + totalHotDogPrice;
+    }
+
+    private static int getTotalProductPrice(int productValue,int productQuantity) {
+        return productValue*productQuantity;
+    }
+
+    private static void printMessage(String message){
+        System.out.println(message);
+    }
+
+
 }
