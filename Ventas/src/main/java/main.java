@@ -2,42 +2,42 @@ import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) {
-        int valPerro = 6000, valHamburguesa = 10000, cantPerro = 0, cantHamburguesa = 0, proSel = 0, cant, selFin = 0, total, totalPer = 0, totalHamb = 0;
+        int hotDogValue = 6000, hamburgerValue = 10000, hotDogSellQuantity = 0, hamburgerSellQuantity = 0, selectedProduct = 0, productQuantity, endOrder = 0, totalOrderPrice, totalHotDogPrice = 0, totalHamburgerPrice = 0;
 
-        boolean initTrans = true;
-        Scanner entradaEscaner = new Scanner(System.in);
+        boolean isOrderActive = true;
+        Scanner input = new Scanner(System.in);
 
         System.out.println("Venta de perros y hamburguesas");
 
-        while (initTrans) {
+        while (isOrderActive) {
 
             System.out.println("Seleccione producto: ");
             System.out.println("1. Perro \n2. Hamburguesa");
-            proSel = Integer.parseInt(entradaEscaner.nextLine());
+            selectedProduct = Integer.parseInt(input.nextLine());
             System.out.println("Indique cantidad: ");
-            cant = Integer.parseInt(entradaEscaner.nextLine());
-            if (proSel == 1) {
-                cantPerro = cantPerro + cant;
-            } else if (proSel == 2) {
-                cantHamburguesa = cantHamburguesa + cant;
+            productQuantity = Integer.parseInt(input.nextLine());
+            if (selectedProduct == 1) {
+                hotDogSellQuantity = hotDogSellQuantity + productQuantity;
+            } else if (selectedProduct == 2) {
+                hamburgerSellQuantity = hamburgerSellQuantity + productQuantity;
             } else {
                 break;
             }
             System.out.println("Desea finalizar o agregar otro producto ?");
             System.out.println("1. Agregar \n2. Finalizar");
-            selFin = Integer.parseInt(entradaEscaner.nextLine());
-            if (selFin == 1) {
-                initTrans = true;
-            } else if (selFin == 2) {
-                initTrans = false;
+            endOrder = Integer.parseInt(input.nextLine());
+            if (endOrder == 1) {
+                isOrderActive = true;
+            } else if (endOrder == 2) {
+                isOrderActive = false;
             } else {
                 break;
             }
         }
 
-        totalHamb = valHamburguesa * cantHamburguesa;
-        totalPer = valPerro * cantPerro;
-        total = totalHamb + totalPer;
-        System.out.println("Total: " + total);
+        totalHamburgerPrice = hamburgerValue * hamburgerSellQuantity;
+        totalHotDogPrice = hotDogValue * hotDogSellQuantity;
+        totalOrderPrice = totalHamburgerPrice + totalHotDogPrice;
+        System.out.println("Total: " + totalOrderPrice);
     }
 }
