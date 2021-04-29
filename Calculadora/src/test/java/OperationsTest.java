@@ -41,10 +41,10 @@ public class OperationsTest {
 
     @Test
     public void mustReturn2point5When5DividedBy2(){
-        int x = 5, y = 2;
+        double x = 5, y = 2;
 
         double result = Operation.divide(x, y);
-
+        System.out.println(result);
         Assert.assertEquals(2.5, result, 0.01);
     }
 

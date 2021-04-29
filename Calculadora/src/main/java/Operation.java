@@ -7,7 +7,9 @@ public class Operation {
         return x-y;
     }
 
-    public static float divide(int x, int y) { return 0; }
+    public static double divide(double x, double y) {
+        System.out.println(x/y);
+        return x/y; }
 
-    public static double add(double x, double y){ return 0.0; }
+    public static double add(double x, double y){ return x+y; }
 }
