@@ -2,30 +2,26 @@ import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) {
-        int valPerro = 6000, valHamburguesa = 10000, cantPerro = 0, cantHamburguesa = 0, proSel = 0, cant, selFin = 0, total, totalPer = 0, totalHamb = 0;
+        int precioPerro = 6000, precioHamburguesa = 10000, cantidadPerro = 0, cantidadHamburguesa = 0, productoSeleccionado = 0, cantidad, operacionSiguiente = 0, totalVenta, totalPerro = 0, totalHamburguesa = 0;
 
-        boolean initTrans = true;
+        boolean continuarCompra = true;
         Scanner entradaEscaner = new Scanner(System.in);
 
         System.out.println("Venta de perros y hamburguesas");
 
-        while (initTrans) {
+        while (continuarCompra) {
 
-            System.out.println("Seleccione producto: ");
-            System.out.println("1. Perro \n2. Hamburguesa");
-            proSel = Integer.parseInt(entradaEscaner.nextLine());
+            proSel = Selector.getProSel(entradaEscaner);
             System.out.println("Indique cantidad: ");
-            cant = Integer.parseInt(entradaEscaner.nextLine());
-            if (proSel == 1) {
-                cantPerro = cantPerro + cant;
-            } else if (proSel == 2) {
-                cantHamburguesa = cantHamburguesa + cant;
+            cantidad = Integer.parseInt(entradaEscaner.nextLine());
+            if (productoSeleccionado == 1) {
+                cantidadPerro = cantidadPerro + cantidad;
+            } else if (productoSeleccionado == 2) {
+                cantidadHamburguesa = cantidadHamburguesa + cantidad;
             } else {
                 break;
             }
-            System.out.println("Desea finalizar o agregar otro producto ?");
-            System.out.println("1. Agregar \n2. Finalizar");
-            selFin = Integer.parseInt(entradaEscaner.nextLine());
+            selFin = Selector.getSelFin(entradaEscaner);
             if (selFin == 1) {
                 initTrans = true;
             } else if (selFin == 2) {
@@ -35,9 +31,10 @@ public class main {
             }
         }
 
-        totalHamb = valHamburguesa * cantHamburguesa;
-        totalPer = valPerro * cantPerro;
-        total = totalHamb + totalPer;
-        System.out.println("Total: " + total);
+        totalHamburguesa = precioHamburguesa * cantidadHamburguesa;
+        totalPerro = precioPerro * cantidadPerro;
+        totalVenta = totalHamburguesa + totalPerro;
+        System.out.println("Valor a pagar: " + totalVenta);
     }
+
 }
