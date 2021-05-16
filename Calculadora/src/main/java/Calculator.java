@@ -18,8 +18,9 @@ public class Calculator {
 	}
 	
 	public static int division(int x, int y) {
+		if(y==0)throw new IllegalStateException();
 		return x/y;
 	}
 
-	public static double sum(double x, double y) { return 0;}
+	public static double sum(double x, double y) { return x+y;}
 }
